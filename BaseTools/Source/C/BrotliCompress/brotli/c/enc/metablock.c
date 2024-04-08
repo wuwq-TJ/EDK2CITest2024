@@ -9,10 +9,11 @@
 
 #include "metablock.h"
 
+#include <brotli/types.h>
+
 #include "../common/constants.h"
 #include "../common/context.h"
 #include "../common/platform.h"
-#include <brotli/types.h>
 #include "bit_cost.h"
 #include "block_splitter.h"
 #include "cluster.h"
@@ -296,8 +297,6 @@ void BrotliBuildMetaBlock(MemoryManager* m,
 #define FN(X) X ## Distance
 #include "metablock_inc.h"  /* NOLINT(build/include) */
 #undef FN
-
-#define BROTLI_MAX_STATIC_CONTEXTS 13
 
 /* Greedy block splitter for one block category (literal, command or distance).
    Gathers histograms for all context buckets. */
